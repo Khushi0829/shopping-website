@@ -26,7 +26,7 @@ const Contact = () => {
         <div className="contact-details">
           <h3>Customer Support</h3>
           <p>📞 Phone: +91 98765 43210</p>
-          <p>📧 Email: support@ehsaaslabel.com</p>
+          <p>📧 Email: support@shopping4u.com</p>
           
 
           <h3>Business Hours</h3>
