@@ -11,11 +11,35 @@ import Cart from './components/Cart';
 import Footer from './components/Footer' ;
 import Products from './components/Products';
 import ProductDetail from './components/ProductDetail';
+import AdminPanel from "./components/AdminPanel";
 import './App.css';
 
 
 
+
 const AppContent = () => {
+  
+  const [showNavbar, setShowNavbar] = useState(true);
+const [lastScrollY, setLastScrollY] = useState(0);
+const [modalOpen, setModalOpen] = useState(false); // control from Shop
+
+
+useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY > lastScrollY) {
+      setShowNavbar(false); // scrolling down
+    } else {
+      setShowNavbar(true);  // scrolling up
+    }
+    setLastScrollY(window.scrollY);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, [lastScrollY]);
+
+
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const location = useLocation();
 const isHome = location.pathname === '/';
@@ -24,7 +48,7 @@ const isHome = location.pathname === '/';
     "New Arrivals just landed",
     "Limited Time Offer: 20% OFF Storewide!"
   ];
-
+  
   // Slide every 10 seconds
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,16 +62,22 @@ const isHome = location.pathname === '/';
   const prevText = () => setCurrentIndex((prev) => (prev - 1 + texts.length) % texts.length);
 
   return (
+  <>
+   
+    {showNavbar && !modalOpen && (
     <>
+    
       <div className="top-bar">
         <span className="arrow left-arrow" onClick={prevText}>&lt;</span>
         <span>{texts[currentIndex]}</span>
         <span className="arrow right-arrow" onClick={nextText}>&gt;</span>
       </div>
 
+      
+
       <nav className="navbar-main">
         <div className="logo">
-          <Link to="/">Ehsaas Label</Link>
+          <Link to="/">Shopping4u</Link>
         </div>
         <div className="nav-links">
           {isHome ? (
@@ -71,6 +101,8 @@ const isHome = location.pathname === '/';
           <i className="fas fa-shopping-bag"></i>
         </div>
       </nav>
+      </>
+      )}
 
       <Routes>
         
@@ -104,10 +136,14 @@ const isHome = location.pathname === '/';
           </>
         } />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop" element={<Shop setModalOpen={setModalOpen} />} />
+
         <Route path="/cart" element={<Cart />} />
 
-        <Route path="/shop" element={<Products />} />
+       <Route path="/products" element={<Products />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        
+        <Route path="/admin" element={<AdminPanel />} />
       </Routes>
       <Footer />
     </>

@@ -3,6 +3,11 @@
   font-size: 1.1rem;
 }
 
+.hide-bars .navbar,
+.hide-bars .topbar {
+  display: none !important;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -30,6 +35,20 @@ padding: 1px 10px;
     margin: 5px 5px 5px 5px;
 }
 
+.top-bar, .navbar-main {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: top 0.3s ease-in-out;
+  z-index: 1000; /* Ensure they are on top of other content */
+}
+
+/* A class to hide the bars */
+.hide-bars {
+  top: -100px; /* Adjust this value to hide the bars completely */
+}
+
 .top-bar {
   display: flex;
   align-items: center;
@@ -38,12 +57,21 @@ padding: 1px 10px;
   color: white;
   font-size: 1rem;
   padding: 10px;
-  position: relative;
+  /* position: relative; */
   height: 40px;
   overflow: hidden;
   align-items: center;
   padding: 8px 16px;
   border-bottom: 1px solid #e0e0e0;
+    /* position: fixed; */
+  top: 0;
+  /* left: 0; */
+  width: 100%;
+  background: #222;
+  color: #fff;
+  padding: 10px;
+  z-index: 1001;
+  text-align: center;
 }
 
 .top-bar span {
@@ -62,7 +90,7 @@ span {
 
 
 .navbar {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     width: 100%;
@@ -81,7 +109,7 @@ span {
 
 /* Fixed navbar */
 .navbar-main {
-  position: fixed;
+  /* position: fixed; */
   top: 40px; 
   margin-top: 8px;
   /* left: 0; */
@@ -102,15 +130,7 @@ body {
 }
 
 .top-bar {
-  position: fixed;
-  top: 0;
-  /* left: 0; */
-  width: 100%;
-  background: #222;
-  color: #fff;
-  padding: 10px;
-  z-index: 1001;
-  text-align: center;
+
 }
 
 .arrow {
