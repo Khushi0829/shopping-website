@@ -23,7 +23,9 @@ const Home = () => {
     const navigate = useNavigate();   // ✅ hook inside component
 
   useEffect(() => {
+    // axios.get('http://localhost:5000/api/items')
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/items`)
+
       .then(res => setProducts(res.data || []))
       .catch(err => console.log("Failed to fetch products:",err));
   }, []);

@@ -129,9 +129,6 @@ body {
   padding-top: 120px; /* adjust based on .top-bar + .navbar height */
 }
 
-.top-bar {
-
-}
 
 .arrow {
   cursor: pointer;
