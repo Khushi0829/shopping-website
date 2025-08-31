@@ -12,7 +12,7 @@ const Shop = () => {
   // Fetch products from backend
 
     useEffect(() => {
-    axios.get("http://localhost:5000/api/items")
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/items`)
       .then(res => setProducts(res.data))
       .catch(err => console.log(err));
   }, []);
