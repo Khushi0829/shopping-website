@@ -11,7 +11,7 @@ app.use(express.json());
 
 // Set up CORS to allow requests from your Vercel frontend
 app.use(cors({
-  origin: "https://shopping-website-one-eosin.vercel.app" // Your Vercel domain
+  origin: "https://shopping-website-khushibhatnagar29-6802s-projects.vercel.app/" // Your Vercel domain
 }));
 
 
