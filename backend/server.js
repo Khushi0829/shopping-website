@@ -7,8 +7,12 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
-app.use(cors());
 app.use(express.json());
+
+// Set up CORS to allow requests from your Vercel frontend
+app.use(cors({
+  origin: "https://shopping-website-kappa-three.vercel.app" // Your Vercel domain
+}));
 
 
 
@@ -18,6 +22,15 @@ mongoose.connect(process.env.MONGO_URI)
 
 .then(() => console.log("MongoDB connected"))
 .catch(err => console.log(err));
+
+// // backend/server.js
+// const cors = require('cors');
+// const allowed = [
+//   'http://localhost:3000',                 // dev
+//   'https://<your-netlify-site>.netlify.app' // update after Netlify URL is known
+// ];
+// app.use(cors({ origin: allowed, credentials: true }));
+
 
 // Schema & Model
 const productSchema = new mongoose.Schema({
