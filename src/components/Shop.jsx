@@ -12,7 +12,7 @@ const Shop = () => {
   // Fetch products from backend
 
     useEffect(() => {
-    axios.get("http://localhost:5000/api/items")
+    axios.get("https://shopping-website-xcmq.onrender.com")
       .then(res => setProducts(res.data))
       .catch(err => console.log(err));
   }, []);

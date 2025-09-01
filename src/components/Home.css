@@ -11,8 +11,8 @@ h1{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px auto;
-  max-width: 600px;
+  margin: 1vh 30%;
+  /* max-width: 600px; */
   background-color: #fff;
   border-radius: 50px;
   padding: 10px 15px;
@@ -178,6 +178,65 @@ h1{
   cursor: pointer;
 }
 
+.features {
+  background: #f9f9f9;          /* soft background */
+  padding: 40px 140px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin: auto ;
+      margin-top: 10vh;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+}
+
+.features h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+  position: relative;
+}
+
+.features h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #ff6600; /* accent color */
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+.features ul {
+  list-style: none;   /* remove default bullets */
+  padding: 13px;
+}
+
+.features li {
+  font-size: larger;
+  margin: 15px 0;
+  padding-left: 35px;
+  position: relative;
+  color: #444;
+  line-height: 1.6;
+  transition: transform 0.3s ease;
+}
+
+.features li::before {
+  content: "✔";              /* custom check icon */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #28a745;            /* green check */
+  font-weight: bold;
+}
+
+.features li:hover {
+  transform: translateX(5px); /* subtle slide effect */
+}
+
 /* About us */
 
 .about-us-section {
@@ -236,65 +295,6 @@ h1{
   margin: 20px 0;
   font-size: 1.1rem;
   letter-spacing: 1px;
-}
-
-.features {
-  background: #f9f9f9;          /* soft background */
-  padding: 40px 140px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  max-width: 700px;
-  margin: auto ;
-      margin-top: 10vh;
-  text-align: left;
-  display: flex;
-  justify-content: center;
-}
-
-.features h2 {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: #333;
-  position: relative;
-}
-
-.features h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: #ff6600; /* accent color */
-  margin: 8px auto 0;
-  border-radius: 2px;
-}
-
-.features ul {
-  list-style: none;   /* remove default bullets */
-  padding: 13px;
-}
-
-.features li {
-  font-size: larger;
-  margin: 15px 0;
-  padding-left: 35px;
-  position: relative;
-  color: #444;
-  line-height: 1.6;
-  transition: transform 0.3s ease;
-}
-
-.features li::before {
-  content: "✔";              /* custom check icon */
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #28a745;            /* green check */
-  font-weight: bold;
-}
-
-.features li:hover {
-  transform: translateX(5px); /* subtle slide effect */
 }
 
 
@@ -446,58 +446,46 @@ h1{
 }
 
 
-/* responsive ness */
+@media (min-width: 768px) {
+    .search-bar {
+        flex-direction: row;
+        gap: 10px;
+    }
 
-/* Tablets */
-@media (max-width: 768px) {
-  .product-grid {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .product-card {
-    width: 45%; /* 2 per row */
-  }
+    .search-bar input {
+        width: auto;
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+    .search-bar button {
+        width: auto;
+        margin-left: 10px;
+    }
+
+    .product-card, .collection-card {
+        width: 45%; /* Two cards per row */
+    }
+
+    .summersale img {
+        width: 45%;
+    }
 }
 
-/* Mobiles */
-@media (max-width: 480px) {
-  .product-card {
-    width: 100%; /* 1 per row */
-  }
-
-  .search-bar input {
-    width: 70%; /* shrink input */
-  }
-
-  .search-bar button {
-    width: 25%;
-  }
+/* Laptop and larger screens (992px and up) */
+@media (min-width: 992px) {
+    .product-card, .collection-card {
+        width: 30%; /* Three cards per row */
+    }
 }
 
-.summersale img {
-  width: 150px;         /* fixed size for desktop */
-  max-width: 100%;      /* shrink on smaller screens */
-  height: auto;         /* keeps aspect ratio */
-  object-fit: cover;
-  border-radius: 4px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+/* Desktop and wider screens (1200px and up) */
+@media (min-width: 1200px) {
+    .product-card, .collection-card {
+        width: 22%; /* Four cards per row */
+    }
 
-h1 {
-  font-size: 2rem;
-}
-p {
-  font-size: 1rem;
-}
-
-@media (max-width: 768px) {
-  .summersale img {
-    width: 45%;   /* 2 per row on tablets */
-  }
-}
-
-@media (max-width: 480px) {
-  .summersale img {
-    width: 100%;  /* 1 per row on phones */
-  }
+    .summersale img {
+        width: 22%;
+    }
 }
