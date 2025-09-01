@@ -13,8 +13,9 @@ app.use(express.json());
 app.use(cors({
   origin:[
     "http://localhost:3000",
-    "https://shopping-website-khushibhatnagar29-6802s-projects.vercel.app"
+    "https://shopping-website-git-master-khushibhatnagar29-6802s-projects.vercel.app"
   ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
    credentials: true
 }));
 
