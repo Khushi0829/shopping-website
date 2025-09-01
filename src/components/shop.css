@@ -30,6 +30,7 @@
   transition: transform 0.2s ease-in-out;
   background: #fff;
   margin-bottom: 2px;
+  padding-bottom: 4vh;
 }
 
 .product-card:hover {
