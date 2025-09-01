@@ -23,7 +23,7 @@ const Home = () => {
     const navigate = useNavigate();   // ✅ hook inside component
 
   useEffect(() => {
-    axios.get('https://shopping-website-xcmq.onrender.com')
+    axios.get('https://shopping-website-xcmq.onrender.com/api/items')
       .then(res => setProducts(res.data || []))
       .catch(err => console.log("Failed to fetch products:",err));
   }, []);
