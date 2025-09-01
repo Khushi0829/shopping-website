@@ -11,7 +11,11 @@ app.use(express.json());
 
 // Set up CORS to allow requests from your Vercel frontend
 app.use(cors({
-  origin:["http://localhost:3000","https://shopping-website-khushibhatnagar29-6802s-projects.vercel.app"]  // Your Vercel domain
+  origin:[
+    "http://localhost:3000",
+    "https://shopping-website-khushibhatnagar29-6802s-projects.vercel.app"
+  ],
+   credentials: true
 }));
 
 
