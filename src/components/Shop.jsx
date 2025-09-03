@@ -81,6 +81,7 @@ const Shop = () => {
             alt="Full View"
             className="modal-img"
             onClick={(e) => e.stopPropagation()}
+            
           />
         </div>
       )}
