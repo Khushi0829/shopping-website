@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./shop.css"
 
-const Shop = () => {
+const Shop = ({ isAuth, setModalOpen, onRequireAuth }) => {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState("All");
   const [selectedImage, setSelectedImage] = useState(null);
@@ -67,7 +67,13 @@ const Shop = () => {
             <h3>{p.name}</h3>
             <p>₹{p.price}</p>
             <p className="category">{p.category}</p>
-            <button>Add to Cart</button>
+            <button onClick={() => {
+              if (!isAuth) {
+                onRequireAuth(); // open login/register modal
+              } else {
+                console.log("Added to cart:", p.name);
+              }
+            }} > Add to Cart </button>
           </div>
         ))}
       </div>

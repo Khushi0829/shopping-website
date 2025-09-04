@@ -1,3 +1,5 @@
+//App.js
+ 
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { Element, Link as ScrollLink } from 'react-scroll';
@@ -12,6 +14,7 @@ import Footer from './components/Footer' ;
 import Products from './components/Products';
 import ProductDetail from './components/ProductDetail';
 import AdminPanel from "./components/AdminPanel";
+import AuthModal from "./components/AuthModal";
 import './App.css';
 
 
@@ -22,6 +25,9 @@ const AppContent = () => {
   const [showNavbar, setShowNavbar] = useState(true);
 const [lastScrollY, setLastScrollY] = useState(0);
 const [modalOpen, setModalOpen] = useState(false); // control from Shop
+
+ const [isAuth, setIsAuth] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
 
 
 useEffect(() => {
@@ -64,7 +70,7 @@ const isHome = location.pathname === '/';
   return (
   <>
    
-    {showNavbar && !modalOpen && (
+    {showNavbar && !modalOpen && !showAuth && (
     <>
     
       <div className="top-bar">
@@ -108,35 +114,17 @@ const isHome = location.pathname === '/';
         
         <Route path="/" element={
           <>
-            <Element name="home">
-              <section id="home">
-               <Home />
-              </section>
-            </Element>
-            <Element name="about">
-              <section id="about">
-                <About />
-              </section>
-            </Element>
-            <Element name="features">
-              <section id="features">
-                <Features />
-              </section>
-            </Element>
-            <Element name="feedback">
-              <section id="feedback">
-                <Feedback />
-              </section>
-            </Element>
-            <Element name="contact">
-              <section id="contact">
-                <Contact />
-              </section>
-            </Element>
+            <Element name="home"><section id="home"><Home /></section></Element>
+            <Element name="about"><section id="about"><About /> </section></Element>
+            <Element name="features"><section id="features"><Features /></section></Element>
+            <Element name="feedback"><section id="feedback"><Feedback /></section></Element>
+            <Element name="contact"><section id="contact"><Contact /></section></Element>
           </>
         } />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/shop" element={<Shop setModalOpen={setModalOpen} />} />
+        <Route path="/shop" element={<Shop 
+         isAuth={isAuth}
+         setModalOpen={setModalOpen}
+         onRequireAuth={() => setShowAuth(true)} />} />
 
         <Route path="/cart" element={<Cart />} />
 
@@ -146,6 +134,17 @@ const isHome = location.pathname === '/';
         <Route path="/admin" element={<AdminPanel />} />
       </Routes>
       <Footer />
+
+            {/* ✅ Show login/register modal */}
+      {showAuth && (
+        <AuthModal
+          onClose={() => setShowAuth(false)}
+          onLogin={() => {
+            setIsAuth(true);
+            setShowAuth(false);
+          }}
+        />
+      )}
     </>
   );
 }
