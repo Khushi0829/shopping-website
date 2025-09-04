@@ -23,7 +23,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} Ehsaas Label. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Shopping4u. All rights reserved.</p>
         <div className="legal-links">
           <a href="/privacy">Privacy Policy</a>
           <span>|</span>
